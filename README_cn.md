@@ -58,10 +58,10 @@
     1.  在Mind Studio操作界面的顶部菜单栏中选择“Tool \> Convert Model”，进入模型转换界面。
     2.  在弹出的Convert Model操作界面中，Model File与Weight File分别选择步骤 2中下载的模型文件和权重文件。
         -   Model Name填写为[表1](#zh-cn_topic_0182554631_table97791025517)中对应的**模型名称**。
-        -   参考[图1](#zh-cn_topic_0182554631_fig1513227955)和[图2](#zh-cn_topic_0182554631_fig61342716510)对face_detection和face_emotion模型进行模型转换配置。
+        -   参考[图1](#zh-cn_topic_0182554631_fig1513227955)和[图2](#zh-cn_topic_0182554631_fig61342716510)对face_detection和depl模型进行模型转换配置。
            
             **图 1**  face_detection模型转化配置参考<a name="zh-cn_topic_0182554631_fig1513227955"></a>  
-             ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/face_detection.png)
+             ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/depl.png)
            
 
             **图 2**  活体检测模型转化配置参考<a name="zh-cn_topic_0182554631_fig61342716510"></a>  
@@ -73,13 +73,13 @@
         face\_detection模型在转换的时候，会有报错。报错信息如下所示。
         
         **图 3**  模型转换错误<a name="zh-cn_topic_0182554631_fig1632884495219"></a>  
-        ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/model-conversion-error.jpg)
+        ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/model-conversion-error.jpg)
         此时在DetectionOutput层的Suggestion中选择SSDDetectionOutput，并点击Retry。
 
         模型转换成功后，后缀为.om的Davinci模型存放地址为$HOME/tools/che/model-zoo/my-model/xxx。
 
 
-4.  将转换好的模型文件（.om文件）上传到[1](#zh-cn_topic_0182554631_li953280133816)中源码所在路径的“sample-faceemotion/script”目录下。
+4.  将转换好的模型文件（.om文件）上传到[1](#zh-cn_topic_0182554631_li953280133816)中源码所在路径的“sample-biopsy/script”目录下。
 5.  以Mind Studio安装用户登录Mind Studio所在Ubuntu服务器，并设置环境变量DDK\_HOME。
 
     **vim \~/.bashrc**
@@ -103,7 +103,7 @@
 
 ## 部署<a name="zh-cn_topic_0182554631_section147911829155918"></a>
 
-1.  以Mind Studio安装用户进入faceemotion应用代码所在根目录，如/home/ascend/sample-faceemotion。
+1.  以Mind Studio安装用户进入活体检测应用代码所在根目录，如/home/ascend/sample-biopsy。
 2.  <a name="zh-cn_topic_0182554631_li08019112542"></a>执行部署脚本，进行工程环境准备，包括ascenddk公共库的编译与部署、Presenter Server服务器的配置等操作，其中Presenter Server用于接收Application发送过来的数据并通过浏览器进行结果展示。
 
     **bash deploy.sh** _host\_ip_ _model\_mode_
@@ -111,7 +111,7 @@
     -   _host\_ip_：Atlas 200 DK开发者板的IP地址。
 
     -   model\_mode代表模型文件及依赖软件的部署方式，默认为internet。
-        -   local：若Mind Studio所在Ubuntu系统未连接网络，请使用local模式，执行此命令前，需要参考[公共代码库下载](#zh-cn_topic_0182554631_section158977311307)将依赖的代码库下载到“/sample-faceemotion/script“目录下。
+        -   local：若Mind Studio所在Ubuntu系统未连接网络，请使用local模式，执行此命令前，需要参考[公共代码库下载](#zh-cn_topic_0182554631_section158977311307)将依赖的代码库下载到“/sample-biopsy/script“目录下。
         -   internet：若Mind Studio所在Ubuntu系统已连接网络，请使用internet模式，在线下载依赖代码库。
 
 
@@ -125,7 +125,7 @@
     如[图4](#zh-cn_topic_0182554631_fig184321447181017)所示，请在“Current environment valid ip list“中选择通过浏览器访问Presenter Server服务使用的IP地址，并输入存储人脸识别解析数据的路径。
 
     **图 4**  工程部署示意图<a name="zh-cn_topic_0182554631_fig184321447181017"></a>  
-   ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/%E5%B7%A5%E7%A8%8B%E9%83%A8%E7%BD%B2%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+   ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/%E5%B7%A5%E7%A8%8B%E9%83%A8%E7%BD%B2%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 3.  启动Presenter Server。
 
@@ -137,17 +137,17 @@
     如[图5](#zh-cn_topic_0182554631_fig69531305324)所示，表示presenter\_server的服务启动成功。
 
     **图 5**  Presenter Server进程启动<a name="zh-cn_topic_0182554631_fig69531305324"></a>  
-    ![images](https://github.com/futureflsl/sample-faceemotion/blob/master/images/Presenter-Server%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8.png)
+    ![images](https://github.com/futureflsl/sample-biopsy/blob/master/images/Presenter-Server%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8.png)
 
     使用上图提示的URL登录Presenter Server，仅支持Chrome浏览器。IP地址为[2](#zh-cn_topic_0182554631_li08019112542)中输入的IP地址，端口号默为7009，如下图所示，表示Presenter Server启动成功。
 
     **图 6**  主页显示<a name="zh-cn_topic_0182554631_fig64391558352"></a>  
-    ![images](https://github.com/futureflsl/sample-faceemotion/blob/master/images/Presenter-Server%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8.png)
+    ![images](https://github.com/futureflsl/sample-biopsy/blob/master/images/Presenter-Server%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8.png)
 
     Presenter Server、Mind Studio与Atlas 200 DK之间通信使用的IP地址示例如下图所示：
 
     **图 7**  IP地址示例<a name="zh-cn_topic_0182554631_fig1881532172010"></a>  
-    ![images](https://github.com/futureflsl/sample-faceemotion/blob/master/images/IP%E5%9C%B0%E5%9D%80%E7%A4%BA%E4%BE%8B.png)
+    ![images](https://github.com/futureflsl/sample-biopsy/blob/master/images/IP%E5%9C%B0%E5%9D%80%E7%A4%BA%E4%BE%8B.png)
 
     其中：
 
@@ -158,9 +158,9 @@
 
 ## 运行<a name="zh-cn_topic_0182554631_section1676879104"></a>
 
-1.  运行Face Emotion程序。
+1.  运行活体检测程序。
 
-    在“sample-faceemotion“目录下执行如下命令运行Facial Recognition应用程序。
+    在“sample-biopsy“目录下执行如下命令运行活体检测应用程序。
 
     **bash run\_biopsyapp.sh** _host\_ip_ _presenter\_view\_app\_name  camera\_channel\_name_   &
 
@@ -177,7 +177,7 @@
     Presenter Server展示界面如[图8](#zh-cn_topic_0182554631_fig1189774382115)所示。
 
     **图 8**  Presenter Server界面<a name="zh-cn_topic_0182554631_fig1189774382115"></a>  
-    ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/Presenter-Server%E7%95%8C%E9%9D%A2.png)
+    ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/Presenter-Server%E7%95%8C%E9%9D%A2.png)
 
     >![](doc/source/img/icon-note.gif) **说明：**   
     >-   活体检测的Presenter Server最多支持2路Channel同时显示，每个  _presenter\_view\_app\_name_  对应一路Channel。  
@@ -189,7 +189,7 @@
 
 -   **停止人脸表情应用**
 
-    活体检测应用执行后会处于持续运行状态，若要停止Face Emotion应用程序，可执行如下操作。
+    活体检测应用执行后会处于持续运行状态，若要停止活体检测应用程序，可执行如下操作。
 
     以Mind Studio安装用户在“sample-biopsy“目录下执行如下命令：
 
@@ -209,7 +209,7 @@
 
 ## 公共代码库下载<a name="zh-cn_topic_0182554631_section158977311307"></a>
 
-将依赖的软件库下载到“/sample-faceemotion/script“目录下。
+将依赖的软件库下载到“/sample-biopsy/script“目录下。
 
 **表 2**  依赖代码库下载
 
