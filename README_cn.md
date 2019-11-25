@@ -66,7 +66,7 @@
 
             **图 2**  face_emotion模型转化配置参考<a name="zh-cn_topic_0182554631_fig61342716510"></a>  
            
-             ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/face_emotion.png)
+             ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/depl.png)
 
     3.  单击OK开始模型转换。
 
@@ -162,7 +162,7 @@
 
     在“sample-faceemotion“目录下执行如下命令运行Facial Recognition应用程序。
 
-    **bash run\_faceemotionapp.sh** _host\_ip_ _presenter\_view\_app\_name  camera\_channel\_name_   &
+    **bash run\_biopsyapp.sh** _host\_ip_ _presenter\_view\_app\_name  camera\_channel\_name_   &
 
     -   _host\_ip_：对于Atlas 200 DK开发者板，即为开发者板的IP地址。
     -   _presenter\_view\_app\_name_：用户自定义的在Presenter Server界面展示的App Name，此Name需要在Presenter Server展示界面唯一，只能是大小写字母、数字、“_”的组合，位数3-20。
@@ -170,7 +170,7 @@
 
     命令示例：
 
-    **bash run\_faceemotionapp.sh 192.168.1.2 video Channel-1 &**
+    **bash run\_biopsyapp.sh 192.168.1.2 video Channel-1 &**
 
 2.  使用启动Presenter Server服务时提示的URL登录 Presenter Server 网站，仅支持Chrome浏览器。
 
@@ -180,7 +180,7 @@
     ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/Presenter-Server%E7%95%8C%E9%9D%A2.png)
 
     >![](doc/source/img/icon-note.gif) **说明：**   
-    >-   Face Emotion的Presenter Server最多支持2路Channel同时显示，每个  _presenter\_view\_app\_name_  对应一路Channel。  
+    >-   活体检测的Presenter Server最多支持2路Channel同时显示，每个  _presenter\_view\_app\_name_  对应一路Channel。  
     >-   由于硬件的限制，每一路支持的最大帧率是20fps，受限于网络带宽的影响，帧率会自动适配较低的帧率进行显示。  
 
 
@@ -189,21 +189,21 @@
 
 -   **停止人脸表情应用**
 
-    Face Emotion应用执行后会处于持续运行状态，若要停止Face Emotion应用程序，可执行如下操作。
+    活体检测应用执行后会处于持续运行状态，若要停止Face Emotion应用程序，可执行如下操作。
 
-    以Mind Studio安装用户在“sample-faceemotion“目录下执行如下命令：
+    以Mind Studio安装用户在“sample-biopsy“目录下执行如下命令：
 
-    **bash stop\_faceemotionapp.sh** _host\_ip_
+    **bash stop\_biopsyapp.sh** _host\_ip_
 
     _host\_ip_：对于Atlas 200 DK开发者板，即为开发者板的IP地址。。
 
     命令示例：
 
-    **bash stop\_faceemotionapp.sh 192.168.1.2**
+    **bash stop\_biopsynapp.sh 192.168.1.2**
 
 -   **停止Presenter Server服务**
 
-    Presenter Server服务启动后会一直处于运行状态，若想停止人脸识别应用对应的Presenter Server服务，可执行如下操作。
+    Presenter Server服务启动后会一直处于运行状态，若想停止活体检测应用对应的Presenter Server服务，可执行如下操作。
 
     **bash stop_prensenterserver.sh**
 
