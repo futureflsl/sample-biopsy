@@ -1,8 +1,8 @@
 中文|[英文](README.md)
 
-# 人脸表情识别<a name="ZH-CN_TOPIC_0185834698"></a>
+# 活体检测<a name="ZH-CN_TOPIC_0185834698"></a>
 
-开发者可以将本Application部署至Atlas 200 DK上实现摄像头对视频中的人脸表情预测，共有7种可能的表情，依次是生气（anger）、厌恶（digust）、恐惧（fear）、开心（happy）、伤心（sad）、惊讶（surprised）、中性（normal）。
+开发者可以将本Application部署至Atlas 200 DK上实现摄像头对视频中的人根据提示进行活体检测。
 
 ## 前提条件<a name="zh-cn_topic_0182554631_section137245294533"></a>
 
@@ -17,13 +17,13 @@
 
 1.  <a name="zh-cn_topic_0182554631_li953280133816"></a>获取源码包。
 
-    将[https://github.com/Ascend/sample-faceemotion](https://github.com/Ascend/sample-facialrecognition)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：/home/ascend/sample-faceemotion。
+    将[https://github.com/Ascend/sample-biopsy](https://github.com/Ascend/sample-biopsy)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：/home/ascend/sample-biopsy。
 
 2.  获取此应用中所需要的原始网络模型。
 
-    参考[表1](#zh-cn_topic_0182554631_table97791025517)获取此应用中所用到的原始网络模型及其对应的权重文件，并将其存放到Mind Studio所在Ubuntu服务器的任意目录，例如$HOME/ascend/models/faceemotion。
+    参考[表1](#zh-cn_topic_0182554631_table97791025517)获取此应用中所用到的原始网络模型及其对应的权重文件，并将其存放到Mind Studio所在Ubuntu服务器的任意目录，例如$HOME/ascend/models/depl。
 
-    **表 1**  Face Emotion中使用模型
+    **表 1**  活体检测中使用模型
 
     <a name="zh-cn_topic_0182554631_table97791025517"></a>
     <table><thead align="left"><tr id="zh-cn_topic_0182554631_row48791253115"><th class="cellrowborder" valign="top" width="13.309999999999999%" id="mcps1.2.4.1.1"><p id="zh-cn_topic_0182554631_p187902511114"><a name="zh-cn_topic_0182554631_p187902511114"></a><a name="zh-cn_topic_0182554631_p187902511114"></a>模型名称</p>
@@ -44,10 +44,10 @@
     </tr>
     <tr id="zh-cn_topic_0182554631_row11880162511114"><td class="cellrowborder" valign="top" width="13.309999999999999%" headers="mcps1.2.4.1.1 "><p id="zh-cn_topic_0182554631_p1388012251117"><a name="zh-cn_topic_0182554631_p1388012251117"></a><a name="zh-cn_topic_0182554631_p1388012251117"></a>face_emotion</p>
     </td>
-    <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0182554631_p1988018251110"><a name="zh-cn_topic_0182554631_p1988018251110"></a><a name="zh-cn_topic_0182554631_p1988018251110"></a>人脸表情分类模型。</p>
+    <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0182554631_p1988018251110"><a name="zh-cn_topic_0182554631_p1988018251110"></a><a name="zh-cn_topic_0182554631_p1988018251110"></a>人脸关键点定位模型。</p>
     <p id="zh-cn_topic_0182554631_p588013251514"><a name="zh-cn_topic_0182554631_p588013251514"></a><a name="zh-cn_topic_0182554631_p588013251514"></a>是基于Caffe的人脸表情模型转换后的网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0182554631_p28801025319"><a name="zh-cn_topic_0182554631_p28801025319"></a><a name="zh-cn_topic_0182554631_p28801025319"></a>请参考<a href="https://github.com/Ascend/models/tree/master/computer_vision/classification/vanillacnn" target="_blank" rel="noopener noreferrer">https://github.com/Ascend/models/tree/master/computer_vision/classification/face_emotion</a><span>目录中</span>README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0182554631_p28801025319"><a name="zh-cn_topic_0182554631_p28801025319"></a><a name="zh-cn_topic_0182554631_p28801025319"></a>请参考<a href="https://github.com/Ascend/models/tree/master/computer_vision/classification/vanillacnn" target="_blank" rel="noopener noreferrer">https://github.com/Ascend/models/tree/master/computer_vision/classification/depl</a><span>目录中</span>README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
       
@@ -66,7 +66,7 @@
 
             **图 2**  face_emotion模型转化配置参考<a name="zh-cn_topic_0182554631_fig61342716510"></a>  
            
-             ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/face_emotion.png)
+             ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/face_emotion.png)
 
     3.  单击OK开始模型转换。
 
