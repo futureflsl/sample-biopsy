@@ -1,8 +1,8 @@
 EN|[CN](README_cn.md)
 
-# Face Emotion<a name="EN-US_TOPIC_0167573069"></a>
+# Biopsy<a name="EN-US_TOPIC_0167573069"></a>
 
-Developers can deploy the application on the Atlas 200 DK to predict the face expression in the video by using the camera.
+Developers can deploy the application on the Atlas 200 DK to predict the biopsy in the video by using the camera.
 
 ## Prerequisites<a name="en-us_topic_0182554631_section137245294533"></a>
 
@@ -17,13 +17,13 @@ Before running the application, obtain the source code package and configure the
 
 1.  <a name="en-us_topic_0182554631_li953280133816"></a>Obtain the source code package.
 
-    Download all the code in the sample-facialrecognition repository at  [https://github.com/Ascend/sample-faceemotion](https://github.com/Ascend/sample-faceemotion)  to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  _/home/ascend/sample-faceemotion.
+    Download all the code in the sample-facialrecognition repository at  [https://github.com/Ascend/sample-biopsy](https://github.com/Ascend/sample-biopsy)  to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  _/home/ascend/sample-biopsy.
 
 2.  Obtain the source network model required by the application.
 
-    Obtain the source network model and its weight file used in the application by referring to  [Table 1](#en-us_topic_0182554631_table97791025517), and save them to any directory on the Ubuntu server where  Mind Studio  is located (for example,  **$HOME/ascend/models/faceemotion**).
+    Obtain the source network model and its weight file used in the application by referring to  [Table 1](#en-us_topic_0182554631_table97791025517), and save them to any directory on the Ubuntu server where  Mind Studio  is located (for example,  **$HOME/ascend/models/depl**).
 
-    **Table  1**  Models used for face emotion
+    **Table  1**  Models used for biopsy
 
     <a name="en-us_topic_0182554631_table97791025517"></a>
     <table><thead align="left"><tr id="en-us_topic_0182554631_row48791253115"><th class="cellrowborder" valign="top" width="13.309999999999999%" id="mcps1.2.4.1.1"><p id="en-us_topic_0182554631_p187902511114"><a name="en-us_topic_0182554631_p187902511114"></a><a name="en-us_topic_0182554631_p187902511114"></a>Model Name</p>
@@ -39,15 +39,15 @@ Before running the application, obtain the source code package and configure the
     <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="en-us_topic_0182554631_p52941556525"><a name="en-us_topic_0182554631_p52941556525"></a><a name="en-us_topic_0182554631_p52941556525"></a>Network model for face detection.</p>
     <p id="en-us_topic_0182554631_p13913132012525"><a name="en-us_topic_0182554631_p13913132012525"></a><a name="en-us_topic_0182554631_p13913132012525"></a>It is a network model converted from ResNet0-SSD300 model based on Caffe.</p>
     </td>
-    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="en-us_topic_0182554631_p188801525813"><a name="en-us_topic_0182554631_p188801525813"></a><a name="en-us_topic_0182554631_p188801525813"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554631_b6722175014127"><a name="en-us_topic_0182554631_b6722175014127"></a><a name="en-us_topic_0182554631_b6722175014127"></a> README.md</strong> in <a href="https://github.com/Ascend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/Ascend/models/tree/master/computer_vision/object_detect/face_detection</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="en-us_topic_0182554631_p188801525813"><a name="en-us_topic_0182554631_p188801525813"></a><a name="en-us_topic_0182554631_p188801525813"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554631_b6722175014127"><a name="en-us_topic_0182554631_b6722175014127"></a><a name="en-us_topic_0182554631_b6722175014127"></a> README.md</strong> in <a href="https://github.com/Ascend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/Ascend/models/tree/master/computer_vision/object_detect/depl</a>.</p>
     </td>
     </tr>
-    <tr id="en-us_topic_0182554631_row11880162511114"><td class="cellrowborder" valign="top" width="13.309999999999999%" headers="mcps1.2.4.1.1 "><p id="en-us_topic_0182554631_p1388012251117"><a name="en-us_topic_0182554631_p1388012251117"></a><a name="en-us_topic_0182554631_p1388012251117"></a>face_emotion</p>
+    <tr id="en-us_topic_0182554631_row11880162511114"><td class="cellrowborder" valign="top" width="13.309999999999999%" headers="mcps1.2.4.1.1 "><p id="en-us_topic_0182554631_p1388012251117"><a name="en-us_topic_0182554631_p1388012251117"></a><a name="en-us_topic_0182554631_p1388012251117"></a>biopsy</p>
     </td>
     <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="en-us_topic_0182554631_p1988018251110"><a name="en-us_topic_0182554631_p1988018251110"></a><a name="en-us_topic_0182554631_p1988018251110"></a>Network model for predicting facial expression.</p>
-    <p id="en-us_topic_0182554631_p1057942195213"><a name="en-us_topic_0182554631_p1057942195213"></a><a name="en-us_topic_0182554631_p1057942195213"></a>It is a network model converted from the faceeemotion model based on Caffe.</p>
+    <p id="en-us_topic_0182554631_p1057942195213"><a name="en-us_topic_0182554631_p1057942195213"></a><a name="en-us_topic_0182554631_p1057942195213"></a>It is a network model converted from the biopsy model based on Caffe.</p>
     </td>
-    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="en-us_topic_0182554631_p28801025319"><a name="en-us_topic_0182554631_p28801025319"></a><a name="en-us_topic_0182554631_p28801025319"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554631_b47241650201210"><a name="en-us_topic_0182554631_b47241650201210"></a><a name="en-us_topic_0182554631_b47241650201210"></a> README.md</strong> in <a href="https://github.com/Ascend/models/tree/master/computer_vision/classification/vanillacnn" target="_blank" rel="noopener noreferrer">https://github.com/Ascend/models/tree/master/computer_vision/classification/faceemotion</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="en-us_topic_0182554631_p28801025319"><a name="en-us_topic_0182554631_p28801025319"></a><a name="en-us_topic_0182554631_p28801025319"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554631_b47241650201210"><a name="en-us_topic_0182554631_b47241650201210"></a><a name="en-us_topic_0182554631_b47241650201210"></a> README.md</strong> in <a href="https://github.com/Ascend/models/tree/master/computer_vision/classification/vanillacnn" target="_blank" rel="noopener noreferrer">https://github.com/Ascend/models/tree/master/computer_vision/classification/depl</a>.</p>
     </td>
     </tr>
     </tbody>
@@ -57,27 +57,27 @@ Before running the application, obtain the source code package and configure the
     1.  Choose  **Tool \> Convert Model**  from the main menu of  Mind Studio. The  **Convert Model**  page is displayed.
     2.  On the  **Convert Model**  page, set** Model File**  and  **Weight File**  to the model file and weight file downloaded in Step 2, respectively.
         -   Set  **Model Name**  to the model name in  [Table 1](#en-us_topic_0182554631_table97791025517).
-        -   Configure model conversion for the facedetection and faceemotion models by referring to  [Figure 1](#en-us_topic_0182554631_fig1513227955)  and  [Figure 2](#en-us_topic_0182554631_fig61342716510), respectively.
+        -   Configure model conversion for the facedetection and biopsy models by referring to  [Figure 1](#en-us_topic_0182554631_fig1513227955)  and  [Figure 2](#en-us_topic_0182554631_fig61342716510), respectively.
 
             **Figure  1**  VanillaCNNModel Model Conversion Configuration Reference<a name="en-us_topic_0182554631_fig1513227955"></a>  
-             ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/face_detection.png)
+             ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/face_detection.png)
 
             
             **Figure  2**  SpherefaceModel Model Conversion Configuration Reference<a name="en-us_topic_0182554631_fig61342716510"></a>  
-           ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/face_emotion.png)           
+           ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/depl.png)           
 
     3.  Click  **OK**  to start model conversion.
 
         During the conversion of the face\_detection model, the following error will be reported.
 
         **Figure  3**  Model conversion error<a name="en-us_topic_0182554631_fig1632884495219"></a>  
-        ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/model-conversion-error.jpg)
+        ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/model-conversion-error.jpg)
 
         Select  **SSDDetectionOutput**  from the  **Suggestion**  drop-down list box at the  **DetectionOutput**  layer and click  **Retry**.
 
         After successful conversion, a .om Da Vinci model is generated in the  **$HOME/tools/che/model-zoo/my-model/xxx**  directory.
 
-4.  Upload the converted .om model file to the  **sample-facemotion/script** directory in the source code path in  [1](#en-us_topic_0182554631_li953280133816).
+4.  Upload the converted .om model file to the  **sample-biopsy/script** directory in the source code path in  [1](#en-us_topic_0182554631_li953280133816).
 5.  Log in to Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user and set the environment variable  **DDK\_HOME**.
 
     **vim \~/.bashrc**
@@ -101,7 +101,7 @@ Before running the application, obtain the source code package and configure the
 
 ## Deployment<a name="en-us_topic_0182554631_section147911829155918"></a>
 
-1.  Access the root directory where the face emotion application code is located as the  Mind Studio  installation user, for example,  **_/home/ascend/sample-faceemotion**.
+1.  Access the root directory where the biopsy application code is located as the  Mind Studio  installation user, for example,  **_/home/ascend/sample-biopsy**.
 2.  <a name="en-us_topic_0182554631_li08019112542"></a>Run the deployment script to prepare the project environment, including compiling and deploying the ascenddk public library, and configuring Presenter Server. The Presenter Server is used to receive the data sent by the application and display the result through the browser.
 
     **bash deploy.sh** _host\_ip_ _model\_mode_
@@ -109,7 +109,7 @@ Before running the application, obtain the source code package and configure the
     -   _host\_ip_: this parameter indicates the IP address of the Atlas 200 DK developer board.
 
     -   _model\_mode_  indicates the deployment mode of the model file. The default setting is  **internet**.
-        -   **local**: If the Ubuntu system where  Mind Studio  is located is not connected to the network, use the local mode. In this case, download the dependent common code library to the  **/sample-faceemotion/script**  directory, by referring to  [Downloading Dependent Code Library](#en-us_topic_0182554631_section158977311307).
+        -   **local**: If the Ubuntu system where  Mind Studio  is located is not connected to the network, use the local mode. In this case, download the dependent common code library to the  **/sample-biopsy/script**  directory, by referring to  [Downloading Dependent Code Library](#en-us_topic_0182554631_section158977311307).
         -   **internet**: If the Ubuntu system where  Mind Studio  is located is connected to the network, use the Internet mode. In this case, download the dependent code library online.
 
 
@@ -122,7 +122,7 @@ Before running the application, obtain the source code package and configure the
     Select the IP address used by the browser to access the Presenter Server service in  **Current environment valid ip list**  and enter the path for storing facial recognition data, as shown in  [Figure 4](#en-us_topic_0182554631_fig184321447181017).
 
     **Figure  4**  Project deployment<a name="en-us_topic_0182554631_fig184321447181017"></a>  
-    ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/%E5%B7%A5%E7%A8%8B%E9%83%A8%E7%BD%B2%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+    ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/%E5%B7%A5%E7%A8%8B%E9%83%A8%E7%BD%B2%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 3.  Start Presenter Server.
 
@@ -131,17 +131,17 @@ Before running the application, obtain the source code package and configure the
     **bash start_presenterserver.sh**
 
     **Figure  5**  Starting the Presenter Server process<a name="en-us_topic_0182554631_fig69531305324"></a>  
-    ![images](https://github.com/futureflsl/sample-faceemotion/blob/master/images/Presenter-Server%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8.png)
+    ![images](https://github.com/futureflsl/sample-biopsy/blob/master/images/Presenter-Server%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8.png)
 
     Use the URL shown in the preceding figure to log in to Presenter Server \(only the Chrome browser is supported\). The IP address is that entered in  [2](#en-us_topic_0182554631_li08019112542)  and the default port number is  **7009**. The following figure indicates that Presenter Server is started successfully.
 
     **Figure  6**  Home page<a name="en-us_topic_0182554631_fig64391558352"></a>  
-   ![images](https://github.com/futureflsl/sample-faceemotion/blob/master/images/Presenter-Server%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8.png)
+   ![images](https://github.com/futureflsl/sample-biopsy/blob/master/images/Presenter-Server%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8.png)
 
     The following figure shows the IP address used by the Presenter Server and  Mind Studio  to communicate with the Atlas 200 DK.
 
     **Figure  7**  Example IP Address<a name="en-us_topic_0182554631_fig14929132312013"></a>  
-    ![images](https://github.com/futureflsl/sample-faceemotion/blob/master/images/IP%E5%9C%B0%E5%9D%80%E7%A4%BA%E4%BE%8B.png)
+    ![images](https://github.com/futureflsl/sample-biopsy/blob/master/images/IP%E5%9C%B0%E5%9D%80%E7%A4%BA%E4%BE%8B.png)
 
     Where:
 
@@ -152,11 +152,11 @@ Before running the application, obtain the source code package and configure the
 
 ## Running<a name="en-us_topic_0182554631_section1676879104"></a>
 
-1.  Run the face emotion application.
+1.  Run the Biopsy application.
 
-    Run the following command in the  **sample-faceemotion**  directory to start the facial recognition application:
+    Run the following command in the  **sample-biopsy**  directory to start the facial recognition application:
 
-    **bash run\_faceemotionapp.sh** _host\_ip_ _presenter\_view\_app\_name camera\_channel\_name_  &
+    **bash run\_biopsyapp.sh** _host\_ip_ _presenter\_view\_app\_name camera\_channel\_name_  &
 
     -   _host\_ip_: For the Atlas 200 DK developer board, this parameter indicates the IP address of the developer board.
     -   _presenter\_view\_app\_name_: Indicates  **App Name**  displayed on the Presenter Server page, which is user-defined. The value of this parameter must be unique on the Presenter Server page, which contains only case-senstive leters, digits, and underscores(_). The number of characters should be 3-20.
@@ -166,14 +166,14 @@ Before running the application, obtain the source code package and configure the
 
     -   Example command:
 
-    **bash run\_faceemotionapp.sh 192.168.1.2 video Channel-1 &**
+    **bash run\_biopsyapp.sh 192.168.1.2 video Channel-1 &**
 
 2.  Use the URL that is displayed when you start the Presenter Server service to log in to the Presenter Server website \(only the Chrome browser is supported\).
 
     [Figure 8](#en-us_topic_0182554631_fig1189774382115)  shows the Presenter Server page.
 
     **Figure  8**  Presenter Server page<a name="en-us_topic_0182554631_fig1189774382115"></a>  
-    ![image](https://github.com/futureflsl/sample-faceemotion/blob/master/images/Presenter-Server%E7%95%8C%E9%9D%A2.png)
+    ![image](https://github.com/futureflsl/sample-biopsy/blob/master/images/Presenter-Server%E7%95%8C%E9%9D%A2.png)
 
     >![](doc/source/img/icon-note.gif) **NOTE:**   
     >-   The Presenter Server of the facial recognition application supports a maximum of two channels at the same time (each  _presenter\_view\_app\_name_  corresponds to a channel).  
@@ -181,19 +181,19 @@ Before running the application, obtain the source code package and configure the
 
 ## Follow-up Operations<a name="en-us_topic_0182554631_section1092612277429"></a>
 
--   **Stopping the Face Emotion Application**
+-   **Stopping the Biopsy Application**
 
     The facial recognition application is running continually after being executed. To stop it, perform the following operation:
 
-    Run the following command in the  **sample-facialrecognition**  directory as the  Mind Studio  installation user:
+    Run the following command in the  **sample-biopsy**  directory as the  Mind Studio  installation user:
 
-    **bash stop\_faceemotionapp.sh** _host\_ip_
+    **bash stop\_biopsyapp.sh** _host\_ip_
 
     _host\_ip_: For the Atlas 200 DK developer board, this parameter indicates the IP address of the developer board.
 
     Example command:
 
-    **bash stop\_faceemotionapp.sh 192.168.1.2**
+    **bash stop\_biopsyapp.sh 192.168.1.2**
 
 -   **Stopping the Presenter Server Service**
 
@@ -203,7 +203,7 @@ Before running the application, obtain the source code package and configure the
 
 ## Downloading Dependent Code Library<a name="en-us_topic_0182554631_section158977311307"></a>
 
-Download the dependent software libraries to the  **/sample-faceemotion/script**  directory.
+Download the dependent software libraries to the  **/sample-biopsy/script**  directory.
 
 **Table  2**  Download the dependent software library
 
