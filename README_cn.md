@@ -129,7 +129,7 @@
 
 3.  启动Presenter Server。
 
-    执行如下命令在后台启动Facial Recognition应用的Presenter Server主程序。
+    执行如下命令在后台启动活体检测应用的Presenter Server主程序。
 
     **bash start_prensenterserver.sh**
 
